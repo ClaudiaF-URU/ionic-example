@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Holi</p>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <br>
+  Name in page: {{name}}
+  <app-new-input-component [fromParent]="name"></app-new-input-component>
+  <app-output (fromChild)="addNum($event)"></app-output>
+
+  <ion-list>
+    <!-- <ion-item *ngFor="let num of numbers" [routerLink]="['/info', num]"> -->
+      <ion-item *ngFor="let num of numbers" (click)="goTo(num)">
+      <p *ngIf="num>10">{{num}}</p>
+      <p *ngIf="num<=10">Menor o igual a 10</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
